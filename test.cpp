@@ -2,9 +2,16 @@
 #include <boost/test/unit_test.hpp>
 #include <iostream>
 #include "adapter.h"
+#include <fstream>
 
-BOOST_AUTO_TEST_CASE(testVoltageConversion) {
-    AmericanDeviceAdapter adapter;
-    BOOST_CHECK_EQUAL(adapter.socket.giveVoltage(), 220);
-    BOOST_CHECK_EQUAL(adapter.getVoltage(), 110); 
+BOOST_AUTO_TEST_CASE(test_getVoltage) {
+    AmericanDeviceImpl americanDevice;
+    AmericanDeviceAdapter adapter(&americanDevice);
+    int voltage = adapter.getVoltage();
+    BOOST_CHECK_EQUAL(voltage, 110);
+}
+
+BOOST_AUTO_TEST_CASE(test_useDevice) {
+    AmericanDeviceImpl americanDevice;
+    AmericanDeviceAdapter adapter(&americanDevice);    
 }
