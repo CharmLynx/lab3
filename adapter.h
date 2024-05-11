@@ -21,7 +21,13 @@ public:
 };
 
 class AmericanDeviceAdapter : public AmericanDevice {
+private:
+
+    AmericanDevice* device;    
+
 public:
+    
+    AmericanDeviceAdapter(AmericanDevice* device) : device(device) {}
     EuropeanSocket socket;
     int getVoltage() {
         int voltage = socket.giveVoltage();
@@ -35,7 +41,6 @@ public:
 
     void useDevice() override {
         int voltage = getVoltage();
-        AmericanDeviceImpl device;
-        device.useDevice();
+        device->useDevice();
     }
 };
