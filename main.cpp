@@ -3,8 +3,9 @@
 
 
 int main() {
-    AmericanDeviceAdapter adapter;
-    int voltage=0;
+    AmericanDeviceImpl americanDevice;
+    AmericanDeviceAdapter adapter(&americanDevice);
     adapter.useDevice();
+
     return 0;
 }
